@@ -2,38 +2,30 @@ import create from 'zustand';
 
 const useRecipeStore = create(set => ({
   recipes: [], // Holds the list of recipes
-  searchTerm: '', // Holds the search term for filtering recipes
-  filteredRecipes: [], // Holds the filtered recipes based on the search term
+  favorites: [], // Holds the list of user's favorite recipes (by recipe ID)
+  recommendations: [], // Holds the list of recommended recipes
 
-  // Action to add a new recipe to the list
-  addRecipe: (newRecipe) => set(state => ({
-    recipes: [...state.recipes, newRecipe], // Adds a new recipe to the recipes array
+  // Add a recipe to favorites
+  addFavorite: (recipeId) => set(state => ({
+    favorites: [...state.favorites, recipeId] // Add recipe ID to favorites
   })),
 
-  // Action to set the recipes list (useful when initializing or updating the list)
+  // Remove a recipe from favorites
+  removeFavorite: (recipeId) => set(state => ({
+    favorites: state.favorites.filter(id => id !== recipeId) // Remove recipe ID from favorites
+  })),
+
+  // Generate recommendations based on favorites
+  generateRecommendations: () => set(state => {
+    // Example logic for generating recommendations based on favorite recipes
+    const recommended = state.recipes.filter(recipe =>
+      state.favorites.includes(recipe.id) && Math.random() > 0.5 // Random selection based on favorite recipes
+    );
+    return { recommendations: recommended };
+  }),
+
+  // Set the initial list of recipes (e.g., from an API or database)
   setRecipes: (recipes) => set({ recipes }),
-
-  // Action to set the search term
-  setSearchTerm: (term) => set({ searchTerm: term }),
-
-  // Action to filter recipes based on the search term
-  filterRecipes: () => set(state => ({
-    filteredRecipes: state.recipes.filter(recipe =>
-      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-    ),
-  })),
-
-  // Action to update an existing recipe
-  updateRecipe: (updatedRecipe) => set(state => ({
-    recipes: state.recipes.map(recipe =>
-      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-    ),
-  })),
-
-  // Action to delete a recipe by its id
-  deleteRecipe: (recipeId) => set(state => ({
-    recipes: state.recipes.filter(recipe => recipe.id !== recipeId),
-  })),
 }));
 
 export { useRecipeStore };
