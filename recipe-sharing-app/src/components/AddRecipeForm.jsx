@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRecipeStore } from '../store/recipeStore';
 
 const AddRecipeForm = () => {
@@ -6,11 +6,13 @@ const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addRecipe({ id: Date.now(), title, description });
-    setTitle('');
-    setDescription('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title && description) {
+      addRecipe({ id: Date.now(), title, description });
+      setTitle('');
+      setDescription('');
+    }
   };
 
   return (
@@ -35,3 +37,4 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+

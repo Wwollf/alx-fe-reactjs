@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRecipeStore } from '../store/recipeStore';
 
 const RecipeList = () => {
@@ -6,12 +7,16 @@ const RecipeList = () => {
   return (
     <div>
       <h2>Recipes</h2>
-      {recipes.map((recipe) => (
-        <div key={recipe.id}>
-          <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
-        </div>
-      ))}
+      {recipes.length > 0 ? (
+        recipes.map((recipe) => (
+          <div key={recipe.id}>
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+          </div>
+        ))
+      ) : (
+        <p>No recipes added yet!</p>
+      )}
     </div>
   );
 };
