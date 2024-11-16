@@ -6,15 +6,18 @@ const SearchBar = () => {
   const filterRecipes = useRecipeStore(state => state.filterRecipes);
 
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);  // Update the search term in the Zustand store
-    filterRecipes();  // Trigger filtering of recipes
+    setSearchTerm(e.target.value);  // Update search term
+    filterRecipes();  // Trigger filtering
   };
 
   return (
     <input
       type="text"
       placeholder="Search recipes..."
-      onChange={handleSearchChange}  // On change, call the search handler
+      onChange={handleSearchChange}
     />
   );
 };
+
+export default SearchBar;
+
