@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './components/Routes';  // Import Routes component
+import RoutesComponent from './components/Routes';  // Import RoutesComponent which manages routing
 
 function App() {
   return (
     <Router>
-      <Routes />  {/* This handles all routing */}
+      <RoutesComponent />  {/* Renders Routes from Routes.jsx */}
     </Router>
   );
 }
 
 export default App;
+
 
 
