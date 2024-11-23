@@ -10,13 +10,14 @@ const Profile = () => {
         <Link to="settings">Profile Settings</Link>
       </nav>
 
-      {/* The Outlet renders the nested route's content */}
+      {/* The Outlet component will render the nested routes */}
       <Outlet />
     </div>
   );
 };
 
 export default Profile;
+
 
 
 
