@@ -5,10 +5,11 @@ import Routes from './components/Routes';  // Import Routes component
 function App() {
   return (
     <Router>
-      <Routes />
+      <Routes />  {/* This handles all routing */}
     </Router>
   );
 }
 
 export default App;
+
 

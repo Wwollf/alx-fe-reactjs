@@ -1,27 +1,23 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Profile from './Profile';
-import ProfileDetails from './ProfileDetails';
-import ProfileSettings from './ProfileSettings';
-import BlogPost from './BlogPost';
-import Home from './Home';
+import Profile from './Profile';  // Main Profile component
+import ProfileDetails from './ProfileDetails';  // Profile details page
+import ProfileSettings from './ProfileSettings';  // Profile settings page
+import Home from './Home';  // Main home page
 
 const RoutesComponent = () => {
   return (
     <Routes>
-      {/* Home Route */}
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />  {/* Main Home route */}
 
-      {/* Profile Route with nested routes */}
+      {/* Profile route with nested routes */}
       <Route path="/profile" element={<Profile />}>
-        <Route path="details" element={<ProfileDetails />} />
-        <Route path="settings" element={<ProfileSettings />} />
+        <Route path="details" element={<ProfileDetails />} />  {/* Nested route for ProfileDetails */}
+        <Route path="settings" element={<ProfileSettings />} />  {/* Nested route for ProfileSettings */}
       </Route>
-
-      {/* Dynamic Blog Post Route */}
-      <Route path="/post/:id" element={<BlogPost />} />
     </Routes>
   );
 };
 
 export default RoutesComponent;
+
