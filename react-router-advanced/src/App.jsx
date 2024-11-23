@@ -11,18 +11,19 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Main route */}
         <Route path="/" element={<Home />} />
         
-        {/* Protected Route */}
+        {/* Protected route (requires authentication) */}
         <Route element={<ProtectedRoute />}>
+          {/* Profile route with nested routes */}
           <Route path="/profile" element={<Profile />}>
-            {/* Nested Routes */}
             <Route path="details" element={<ProfileDetails />} />
             <Route path="settings" element={<ProfileSettings />} />
           </Route>
         </Route>
         
-        {/* Dynamic Route for Blog Posts */}
+        {/* Dynamic route for a blog post */}
         <Route path="/post/:id" element={<BlogPost />} />
       </Routes>
     </Router>
@@ -30,4 +31,3 @@ function App() {
 }
 
 export default App;
-
