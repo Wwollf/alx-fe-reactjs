@@ -16,6 +16,7 @@ function App() {
         {/* Protected Route */}
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />}>
+            {/* Nested Routes */}
             <Route path="details" element={<ProfileDetails />} />
             <Route path="settings" element={<ProfileSettings />} />
           </Route>
@@ -29,4 +30,3 @@ function App() {
 }
 
 export default App;
-
