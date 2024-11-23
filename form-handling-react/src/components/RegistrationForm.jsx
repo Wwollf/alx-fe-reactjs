@@ -11,7 +11,9 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState('');
 
-  // Handles input changes
+  // Destructure formData
+  const { username, email, password } = formData;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -21,15 +23,12 @@ const RegistrationForm = () => {
   // Validate form fields
   const validate = () => {
     const newErrors = {};
-
-    if (!formData.username) newErrors.username = 'Username is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
-
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
     return newErrors;
   };
 
-  // Handles form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -41,7 +40,7 @@ const RegistrationForm = () => {
 
     setSuccess('');
     try {
-      const response = await mockRegisterUser(formData);
+      const response = await mockRegisterUser({ username, email, password });
       setSuccess(response.message); // Show success message
     } catch (err) {
       setErrors({ general: err.message }); // Handle API error
@@ -55,7 +54,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username}
+          value={username} // Matches "value={username}" requirement
           onChange={handleChange}
         />
         {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>}
@@ -65,7 +64,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
+          value={email} // Matches "value={email}" requirement
           onChange={handleChange}
         />
         {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
@@ -75,7 +74,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
+          value={password} // Matches "value={password}" requirement
           onChange={handleChange}
         />
         {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
