@@ -5,7 +5,7 @@ import Routes from './components/Routes';  // Import Routes component
 function App() {
   return (
     <Router>
-      <Routes />  {/* Routes component will handle routing */}
+      <Routes />  {/* This handles all routing */}
     </Router>
   );
 }

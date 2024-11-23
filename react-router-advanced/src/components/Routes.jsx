@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Profile from './Profile';  // Profile component with nested routes
+import Profile from './Profile';  // Main Profile component
 import ProfileDetails from './ProfileDetails';  // Profile details page
 import ProfileSettings from './ProfileSettings';  // Profile settings page
-import Home from './Home';  // Home page
+import Home from './Home';  // Main home page
 
 const RoutesComponent = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />  {/* Main Home route */}
-      
+
       {/* Profile route with nested routes */}
       <Route path="/profile" element={<Profile />}>
         <Route path="details" element={<ProfileDetails />} />  {/* Nested route for ProfileDetails */}
@@ -20,5 +20,4 @@ const RoutesComponent = () => {
 };
 
 export default RoutesComponent;
-
 
