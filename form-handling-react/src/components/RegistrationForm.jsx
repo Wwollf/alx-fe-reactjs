@@ -11,11 +11,13 @@ const RegistrationForm = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  // Handles input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Handles form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { username, email, password } = formData;
@@ -30,9 +32,9 @@ const RegistrationForm = () => {
 
     try {
       const response = await mockRegisterUser(formData);
-      setSuccess(response.message); // Display success message
+      setSuccess(response.message); // Show success message
     } catch (err) {
-      setError(err.message); // Display error message
+      setError(err.message); // Show error message
     }
   };
 
@@ -43,8 +45,8 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username}
-          onChange={handleChange}
+          value={formData.username} // Controlled input
+          onChange={handleChange} // Updates state
         />
       </div>
       <div>
@@ -52,8 +54,8 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange}
+          value={formData.email} // Controlled input
+          onChange={handleChange} // Updates state
         />
       </div>
       <div>
@@ -61,8 +63,8 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
-          onChange={handleChange}
+          value={formData.password} // Controlled input
+          onChange={handleChange} // Updates state
         />
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -73,4 +75,5 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
 
