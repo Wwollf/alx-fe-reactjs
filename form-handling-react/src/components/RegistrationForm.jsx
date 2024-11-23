@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { mockRegisterUser } from '../api/mockApi'; // Import mock API
+import { mockRegisterUser } from '../api/mockApi';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -11,16 +11,16 @@ const RegistrationForm = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Handles input changes
+  // Destructure formData
+  const { username, email, password } = formData;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handles form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, password } = formData;
 
     if (!username || !email || !password) {
       setError('All fields are required!');
@@ -45,8 +45,8 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username} // Controlled input
-          onChange={handleChange} // Updates state
+          value={username} // Directly use destructured variable
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -54,8 +54,8 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email} // Controlled input
-          onChange={handleChange} // Updates state
+          value={email} // Directly use destructured variable
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -63,8 +63,8 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password} // Controlled input
-          onChange={handleChange} // Updates state
+          value={password} // Directly use destructured variable
+          onChange={handleChange}
         />
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -75,5 +75,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-
