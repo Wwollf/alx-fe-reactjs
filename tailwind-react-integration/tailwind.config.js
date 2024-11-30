@@ -6,6 +6,8 @@ module.exports = {
   },
   plugins: [], // Add plugins here if required
   darkMode: "class", // Enables dark mode via a `.dark` class on a parent element
+  plugins: "class",
+  variants: "class",
 
 };
 
