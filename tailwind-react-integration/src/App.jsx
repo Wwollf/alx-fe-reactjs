@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import UserProfile from "./components/UserProfile";
 import './App.css'
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
     </div>
     <div className="bg-gray-50 min-h-screen flex items-center justify-center">
       <h1 className="text-4xl font-bold text-blue-600">Tailwind CSS Setup Verified!</h1>
+    </div>
+    <div>
+      <UserProfile />
     </div>
     </>
   )
