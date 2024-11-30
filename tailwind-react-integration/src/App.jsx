@@ -40,6 +40,9 @@ function App() {
     <div>
       <UserProfile />
     </div>
+    <div className="sm:p-4 bg-blue-500">
+      Responsive Padding Test
+    </div>
     </>
   )
 }
