@@ -10,12 +10,12 @@ function UserProfile() {
           John Doe
         </h1>
         <p className="text-sm sm:text-base text-gray-600 text-center">
-          Developer at Example Co. Loves to write code and explore new
-          technologies.
+          Developer at Example Co. Loves to write code and explore new technologies.
         </p>
       </div>
     );
   }
   
   export default UserProfile;
+  
   
