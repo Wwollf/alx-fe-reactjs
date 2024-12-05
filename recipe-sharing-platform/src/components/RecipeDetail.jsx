@@ -21,12 +21,14 @@ const RecipeDetail = () => {
   return (
     <div className="p-4 max-w-4xl mx-auto">
       <h1 className="text-4xl font-bold text-center mb-6">{recipe.title}</h1>
-      <img
-        src={recipe.image}
-        alt={recipe.title}
-        className="w-full h-64 object-cover rounded-lg mb-6"
-      />
-      <div>
+      <div className="shadow-lg rounded-lg overflow-hidden mb-6">
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className="w-full h-64 object-cover"
+        />
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6">
         <h2 className="text-2xl font-semibold mb-4">Ingredients:</h2>
         <ul className="list-disc list-inside mb-6">
           {recipe.ingredients.map((ingredient, index) => (
