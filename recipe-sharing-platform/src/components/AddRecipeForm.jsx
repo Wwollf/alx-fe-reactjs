@@ -10,7 +10,7 @@ const AddRecipeForm = () => {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // Correct usage of e.target.value
     setFormData({ ...formData, [name]: value });
   };
 
@@ -30,7 +30,6 @@ const AddRecipeForm = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form Submitted", formData);
-      // Reset form fields after submission
       setFormData({ title: "", ingredients: "", steps: "" });
       setErrors({});
       alert("Recipe added successfully!");
@@ -41,7 +40,6 @@ const AddRecipeForm = () => {
     <div className="max-w-xl mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-bold text-center mb-4">Add New Recipe</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Recipe Title */}
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700">
             Recipe Title
@@ -59,7 +57,6 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Ingredients */}
         <div>
           <label htmlFor="ingredients" className="block text-sm font-medium text-gray-700">
             Ingredients (comma-separated)
@@ -77,7 +74,6 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Preparation Steps */}
         <div>
           <label htmlFor="steps" className="block text-sm font-medium text-gray-700">
             Preparation Steps
@@ -95,7 +91,6 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
@@ -108,3 +103,4 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+
