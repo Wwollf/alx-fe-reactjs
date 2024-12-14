@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { fetchUserData } from "./services/githubAPI";
+import ExampleComponent from './components/Home';
 
 function App() {
     useEffect(() => {
@@ -14,6 +15,9 @@ function App() {
         <div>
             <h1>GitHub User Search Application</h1>
         </div>
+
+                
+
     );
 }
 
