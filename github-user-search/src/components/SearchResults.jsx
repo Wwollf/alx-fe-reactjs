@@ -1,13 +1,13 @@
 import React from 'react';
 
 const SearchResults = ({ user, error, loading }) => {
-    // Display loading state
+    // Show loading message if loading state is true
     if (loading) return <p>Loading...</p>;
 
-    // Display error message if user is not found
+    // Show error message if there is an error
     if (error) return <p>Looks like we can't find the user.</p>;
 
-    // Display user details
+    // Display user data if the user exists
     if (user) {
         return (
             <div>

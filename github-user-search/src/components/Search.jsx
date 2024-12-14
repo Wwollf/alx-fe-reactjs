@@ -6,8 +6,8 @@ const Search = ({ onSearch }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username.trim()) {
-            onSearch(username); // Call onSearch to fetch user data
-            setUsername(''); // Reset input field after submission
+            onSearch(username); // Trigger the API call in App.jsx
+            setUsername(''); // Reset the input field after submitting
         }
     };
 
@@ -25,3 +25,4 @@ const Search = ({ onSearch }) => {
 };
 
 export default Search;
+

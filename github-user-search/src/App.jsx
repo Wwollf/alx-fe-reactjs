@@ -14,25 +14,27 @@ const App = () => {
         setUser(null);
 
         try {
-            const userData = await fetchUserData(username);
-            setUser(userData);
+            const userData = await fetchUserData(username); // Fetch data from GitHub API
+            setUser(userData); // Set user data
         } catch (err) {
-            setError(err.message);
+            setError('Looks like we can\'t find the user.'); // Handle errors
         } finally {
-            setLoading(false);
+            setLoading(false); // End loading
         }
     };
 
     return (
         <div>
             <h1>GitHub User Search</h1>
-            <Search onSearch={handleSearch} />
-            <SearchResults user={user} error={error} loading={loading} />
+            <Search onSearch={handleSearch} /> {/* Search component */}
+            <SearchResults user={user} error={error} loading={loading} /> {/* Results component */}
         </div>
     );
 };
 
 export default App;
+
+
 
 
 
