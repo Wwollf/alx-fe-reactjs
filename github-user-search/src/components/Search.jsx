@@ -1,55 +1,57 @@
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService'; // Import the API service
+import { fetchUserData } from '../services/githubService';  // Import the fetchUserData function
 
 const Search = () => {
-    // State to store the input value, user data, loading status, and error message
-    const [username, setUsername] = useState('');
-    const [userData, setUserData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [username, setUsername] = useState('');  // Track the username input
+    const [userData, setUserData] = useState(null);  // Store the fetched user data
+    const [loading, setLoading] = useState(false);  // Track the loading state
+    const [error, setError] = useState(null);  // Track any error messages
 
-    // Handle form submission and fetch user data from GitHub
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        setLoading(true);  // Set loading to true when the request starts
-        setError(''); // Clear previous errors
-        setUserData(null);  // Reset previous user data
+    // Handle the input change for the username
+    const handleInputChange = (event) => {
+        setUsername(event.target.value);
+    };
+
+    // Handle form submission to fetch the user data
+    const handleSearch = async (event) => {
+        event.preventDefault();  // Prevent the page from refreshing on form submission
+        setLoading(true);  // Set loading to true when starting the fetch request
+        setError(null);  // Reset any previous error
+        setUserData(null);  // Reset the user data on each new search
 
         try {
-            // Fetch user data from GitHub API using the provided username
+            // Fetch the user data from the GitHub API
             const data = await fetchUserData(username);
-            setUserData(data);  // Set the fetched user data to the state
-        } catch (err) {
-            setError("Looks like we can't find the user"); // Show error if user not found
+            setUserData(data);  // Set the user data state with the fetched data
+        } catch (error) {
+            setError("Looks like we can't find the user");  // Set error message if the user is not found
         } finally {
-            setLoading(false);  // Set loading to false once the request is done
+            setLoading(false);  // Set loading to false after the API call completes
         }
     };
 
     return (
         <div>
             <form onSubmit={handleSearch}>
-                <input 
-                    type="text" 
-                    placeholder="Enter GitHub username" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
+                <input
+                    type="text"
+                    value={username}
+                    onChange={handleInputChange}
+                    placeholder="Enter GitHub username"
+                    required
                 />
                 <button type="submit">Search</button>
             </form>
 
-            {/* Display loading message if data is being fetched */}
-            {loading && <p>Loading...</p>}
-
-            {/* Display error message if an error occurred */}
-            {error && <p>{error}</p>}
-
-            {/* Display user data if successfully fetched */}
-            {userData && (
+            {loading && <p>Loading...</p>}  {/* Display Loading text when fetching */}
+            {error && <p>{error}</p>}  {/* Display error message if user is not found */}
+            {userData && !loading && (
                 <div>
-                    <img src={userData.avatar_url} alt="User Avatar" width="100" />
+                    <img src={userData.avatar_url} alt="User Avatar" width="100" height="100" />
                     <h2>{userData.login}</h2>
-                    <a href={userData.html_url} target="_blank" rel="noopener noreferrer">View Profile</a>
+                    <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
+                        View Profile
+                    </a>
                 </div>
             )}
         </div>
@@ -57,5 +59,3 @@ const Search = () => {
 };
 
 export default Search;
-
-
