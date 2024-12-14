@@ -28,7 +28,9 @@ const App = () => {
             <h1>GitHub User Search</h1>
             <Search onSearch={handleSearch} /> {/* Search component */}
             <SearchResults user={user} error={error} loading={loading} /> {/* Results component */}
+            
         </div>
+        
     );
 };
 
