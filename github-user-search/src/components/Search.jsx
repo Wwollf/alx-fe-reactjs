@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService';  // Import the fetchUserData function
+import { fetchUserData } from '../services/githubService'; // Make sure this is correctly imported
 
 const Search = () => {
     const [username, setUsername] = useState('');  // Track the username input
@@ -47,8 +47,8 @@ const Search = () => {
             {error && <p>{error}</p>}  {/* Display error message if user is not found */}
             {userData && !loading && (
                 <div>
-                    <img src={userData.avatar_url} alt="User Avatar" width="100" height="100" />
-                    <h2>{userData.login}</h2>
+                    <img src={userData.avatar_url} alt="User Avatar" width="100" height="100" /> {/* Display avatar */}
+                    <h2>{userData.login}</h2>  {/* Display GitHub username */}
                     <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
                         View Profile
                     </a>
