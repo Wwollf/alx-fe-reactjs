@@ -6,8 +6,8 @@ const Search = ({ onSearch }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username.trim()) {
-            onSearch(username);
-            setUsername('');
+            onSearch(username); // Call onSearch to fetch user data
+            setUsername(''); // Reset input field after submission
         }
     };
 
